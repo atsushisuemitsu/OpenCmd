@@ -30,7 +30,7 @@ Windows 11 の右クリックメニューに「管理者としてコマンドプ
 3. 「その他のオプションを確認」をクリック（Windows 11の場合）
 4. 「管理者としてコマンドプロンプトを開く」をクリック
 5. UACプロンプトで「はい」をクリック
-6. そのフォルダのパスで管理者権限のCMDが開き、`claude -c --dangerously-skip-permissions` のテキストが表示される
+6. そのフォルダのパスで管理者権限のCMDが開き、プロンプトに `claude -c --dangerously-skip-permissions` が表示・実行される
 
 > **補足**: Windows 11では、このメニュー項目は「その他のオプションを確認」（Shift+右クリックでも表示可能）の中に表示されます。Windows 11のモダンメニュー（トップレベル）への追加はCOM拡張+MSIX署名が必要なため、レジストリ方式ではレガシーメニュー配下に表示されます。
 
@@ -39,13 +39,13 @@ Windows 11 の右クリックメニューに「管理者としてコマンドプ
 メニュー選択時に以下の処理が実行されます:
 
 ```
-PowerShell -windowstyle hidden -Command "Start-Process cmd.exe -ArgumentList '/s /k pushd \"%V\" ^& echo. ^& echo claude -c --dangerously-skip-permissions' -Verb RunAs"
+PowerShell -windowstyle hidden -Command "Start-Process cmd.exe -ArgumentList '/q /s /k pushd \"%V\" && echo on && claude -c --dangerously-skip-permissions' -Verb RunAs"
 ```
 
 1. PowerShellを非表示で起動
 2. `Start-Process ... -Verb RunAs` でUAC昇格を要求
-3. `cmd.exe /s /k pushd "%V"` で対象フォルダに移動したCMDを開く
-4. `echo claude -c --dangerously-skip-permissions` でコマンドテキストを画面に表示
+3. `cmd.exe /q` でエコーOFFにし、`pushd "%V"` を非表示で実行（対象フォルダに移動）
+4. `echo on` でエコーを戻し、`claude -c --dangerously-skip-permissions` をプロンプト (`>`) に表示・実行
 5. `pushd` はUNCパス（`\\server\share`）やドライブ間移動にも対応
 
 ## 動作環境
