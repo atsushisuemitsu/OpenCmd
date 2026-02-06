@@ -1,0 +1,33 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; OpenCmd - 管理者としてコマンドプロンプトを開く
+; Install: このファイルをダブルクリックして実行
+; ============================================================
+
+; --- フォルダ内の空白部分を右クリック ---
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdAsAdmin]
+@="管理者としてコマンドプロンプトを開く(&A)"
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdAsAdmin\command]
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""
+
+; --- フォルダアイコンを右クリック ---
+[HKEY_CLASSES_ROOT\Directory\shell\OpenCmdAsAdmin]
+@="管理者としてコマンドプロンプトを開く(&A)"
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\OpenCmdAsAdmin\command]
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""
+
+; --- ドライブを右クリック ---
+[HKEY_CLASSES_ROOT\Drive\shell\OpenCmdAsAdmin]
+@="管理者としてコマンドプロンプトを開く(&A)"
+"Icon"="cmd.exe"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\OpenCmdAsAdmin\command]
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""

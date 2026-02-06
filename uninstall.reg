@@ -1,0 +1,15 @@
+Windows Registry Editor Version 5.00
+
+; ============================================================
+; OpenCmd - アンインストール
+; このファイルをダブルクリックしてメニューを削除
+; ============================================================
+
+; --- フォルダ内の空白部分を右クリック ---
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdAsAdmin]
+
+; --- フォルダアイコンを右クリック ---
+[-HKEY_CLASSES_ROOT\Directory\shell\OpenCmdAsAdmin]
+
+; --- ドライブを右クリック ---
+[-HKEY_CLASSES_ROOT\Drive\shell\OpenCmdAsAdmin]
