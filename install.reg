@@ -12,7 +12,7 @@ Windows Registry Editor Version 5.00
 "HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdAsAdmin\command]
-@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\" && echo claude -c --dangerously-skip-permissions' -Verb RunAs\""
 
 ; --- フォルダアイコンを右クリック ---
 [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdAsAdmin]
@@ -21,7 +21,7 @@ Windows Registry Editor Version 5.00
 "HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Directory\shell\OpenCmdAsAdmin\command]
-@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\" && echo claude -c --dangerously-skip-permissions' -Verb RunAs\""
 
 ; --- ドライブを右クリック ---
 [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdAsAdmin]
@@ -30,4 +30,4 @@ Windows Registry Editor Version 5.00
 "HasLUAShield"=""
 
 [HKEY_CLASSES_ROOT\Drive\shell\OpenCmdAsAdmin\command]
-@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\"' -Verb RunAs\""
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s /k pushd \\\"%V\\\" && echo claude -c --dangerously-skip-permissions' -Verb RunAs\""
