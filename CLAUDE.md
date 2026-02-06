@@ -14,7 +14,8 @@ OpenCmd is a Windows registry-based tool that adds "Open CMD as Administrator" t
 
 ## Key Technical Details
 
-- `.reg` files must use Windows line endings (CRLF) and UTF-16 LE with BOM encoding for Japanese characters to display correctly in the registry editor. However, the current files use UTF-8 which works for the actual registry import on modern Windows.
+- `.reg` files use UTF-16 LE with BOM encoding (required for Japanese characters to display correctly in the registry editor and context menus). When editing `.reg` files, always re-encode to UTF-16 LE BOM before committing.
+- Commands in `.reg` are chained using `^&` (escaped `&` for cmd.exe) rather than `&&` to ensure reliable execution through the PowerShell → cmd.exe pipeline
 - The `%V` shell variable in commands expands to the target folder path at runtime
 - `pushd` is used instead of `cd /d` because it supports UNC paths (`\\server\share`)
 - `HasLUAShield` value displays the UAC shield icon on the menu item

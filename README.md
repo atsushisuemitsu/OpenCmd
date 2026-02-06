@@ -39,7 +39,7 @@ Windows 11 の右クリックメニューに「管理者としてコマンドプ
 メニュー選択時に以下の処理が実行されます:
 
 ```
-PowerShell -windowstyle hidden -Command "Start-Process cmd.exe -ArgumentList '/s /k pushd \"%V\" && echo claude -c --dangerously-skip-permissions' -Verb RunAs"
+PowerShell -windowstyle hidden -Command "Start-Process cmd.exe -ArgumentList '/s /k pushd \"%V\" ^& echo. ^& echo claude -c --dangerously-skip-permissions' -Verb RunAs"
 ```
 
 1. PowerShellを非表示で起動
